@@ -85,4 +85,6 @@ Create database called Data (you should be able to right click on the Airflow da
 
 We should now have an environment that we can release our DAGs into and run where the output from these will be stored in a Postgres database.
 
-          
+12. Copy the files under the dag directory to the dags directory on your computer, should be the same directory as the docker-compose.yaml file
+
+13. Go to http://localhost:8080 and you should these in your list of DAGs. Flick the Pause/Unpause button then run each one
