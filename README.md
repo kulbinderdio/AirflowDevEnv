@@ -12,12 +12,17 @@ Easiest way to do this is by using curl -LfO 'https://airflow.apache.org/docs/ap
 3. Using an editor of your choice open the docker-compose.yaml file downloaded and make the following changes:
 
 **change** 
+
       AIRFLOW__CORE__LOAD_EXAMPLES: 'true' to AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+      
       **under** 
+      
         services:
           postgres:
             image: postgres:13 
+            
       **add**
+      
             ports:
               - 5432:5432
     
