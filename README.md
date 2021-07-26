@@ -4,10 +4,13 @@ This repository details how to setup a development environment for AirFlow and t
 This setup is a fully Docker container based approach that will show how to install AitFlow, install additional Python libraries, setup Postgres database access to store screen scraped information. Most of the information can be found on the Internet but I will undertake some additional configuration.
 
 1. Install Docker and Docker-compose. https://docs.docker.com/
+
 2. Install Docker setup of AirFlow. Download docker setup file from airflow.apache.org/docs/apache-airflow/2.1.2/docker-compose.yaml
 Create a new Airflow directory somewhere convenient for you on your machine
 Easiest way to do this is by using curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.1.2/docker-compose.yaml'
+
 3. Using an editor of your choice open the docker-compose.yaml file downloaded and make the following changes:
+
 **change** 
       AIRFLOW__CORE__LOAD_EXAMPLES: 'true' to AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
       **under** 
@@ -26,8 +29,10 @@ Mac Example
           export _PIP_ADDITIONAL_REQUIREMENTS="lxml"
           
 5. Using a terminal window go to the directory that houses the docker-compose.yaml file
+
 6. Type docker-compose up
 This should start up the AirFlow environment
+
 7. In a browser type, http://localhost:8080/health
 You should see the following output
         {
@@ -48,13 +53,14 @@ Fill in details as below
 10. Lets setup our database and table to hold our data. Using a Postgres database client such as pgAdmin4 or DBeaver connect to the database. The details you will need are Host:localhost Port:5432 Database:airflow Username:airflow Password:airflow
 Create database called Data (you should be able to right click on the Airflow database in your Postgres client and select Create Database. Specify Airfloow as the Owner
 11. Run the following SQL
+
         CREATE SEQUENCE public.test_id_seq
             INCREMENT 1
             START 1
             MINVALUE 1
             MAXVALUE 2147483647
             CACHE 1;
-
+            
         ALTER SEQUENCE public.test_id_seq
             OWNER TO airflow;
             
